@@ -3,10 +3,10 @@ import { createContext, useContext, useState, useCallback } from 'react';
 const AuthContext = createContext(null);
 
 const MOCK_USERS = {
-  'citizen@civic.lens': { id: '1', name: 'Priya Sharma', email: 'citizen@civic.lens', role: 'citizen', ward_id: 'W-14', city_id: 'BLR', impact_score: 1250, avatar: null },
-  'authority@civic.lens': { id: '2', name: 'Rajesh Kumar', email: 'authority@civic.lens', role: 'authority', ward_id: 'W-14', city_id: 'BLR', department: 'Solid Waste Management', tier: 'ward' },
-  'admin@civic.lens': { id: '3', name: 'Admin User', email: 'admin@civic.lens', role: 'admin', city_id: 'BLR' },
-  'org@civic.lens': { id: '4', name: 'GreenCorp Housing', email: 'org@civic.lens', role: 'organization', org_id: 'ORG-1', city_id: 'BLR' },
+  'citizen@civic.lens': { id: '1', name: 'Hamza Ali Mazari', email: 'citizen@civic.lens', role: 'citizen', ward_id: 'W-14', city_id: 'BLR', impact_score: 1250, avatar: null },
+  'authority@civic.lens': { id: '2', name: 'Jameel Jamali', email: 'authority@civic.lens', role: 'authority', ward_id: 'W-14', city_id: 'BLR', department: 'Solid Waste Management', tier: 'ward' },
+  'admin@civic.lens': { id: '3', name: 'Ajay Sanyal', email: 'admin@civic.lens', role: 'admin', city_id: 'BLR' },
+  'org@civic.lens': { id: '4', name: 'RAW', email: 'org@civic.lens', role: 'organization', org_id: 'ORG-1', city_id: 'BLR' },
 };
 
 export function AuthProvider({ children }) {
