@@ -11,6 +11,7 @@ import {
   ArrowRight, CheckCircle, Zap, Globe, Award, TrendingUp,
   Building2, Truck, BookOpen, ChevronRight, Star, Leaf
 } from 'lucide-react';
+import { HeroGlobe } from '@/components/landing/HeroGlobe';
 
 const fadeInUp = {
   initial: { opacity: 0, y: 30 },
@@ -86,15 +87,20 @@ export default function Landing() {
     <PageWrapper>
       {/* ===== HERO ===== */}
       <section ref={heroRef} className="relative min-h-[90vh] flex items-center overflow-hidden">
-        {/* Background Effects */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-1/4 -left-32 w-96 h-96 bg-civic-500/20 rounded-full blur-[120px] animate-pulse-glow" />
-          <div className="absolute top-1/3 right-0 w-80 h-80 bg-teal-500/15 rounded-full blur-[100px] animate-pulse-glow" style={{ animationDelay: '1s' }} />
-          <div className="absolute bottom-1/4 left-1/3 w-72 h-72 bg-ocean-500/10 rounded-full blur-[100px] animate-pulse-glow" style={{ animationDelay: '2s' }} />
+        {/* Globe Background */}
+        <div className="absolute inset-0 z-0 flex justify-end items-center pointer-events-auto opacity-80 dark:opacity-40 translate-x-1/4 overflow-hidden">
+          <HeroGlobe />
         </div>
 
-        <motion.div style={{ y: heroY, opacity: heroOpacity }} className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 w-full">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        {/* Ambient Blur Effects */}
+        <div className="absolute inset-0 overflow-hidden z-0 pointer-events-none">
+          <div className="absolute top-1/4 -left-32 w-96 h-96 bg-civic-500/20 rounded-full blur-[120px]" />
+          <div className="absolute top-1/3 right-0 w-80 h-80 bg-teal-500/15 rounded-full blur-[100px]" />
+          <div className="absolute bottom-1/4 left-1/3 w-72 h-72 bg-ocean-500/10 rounded-full blur-[100px]" />
+        </div>
+
+        <motion.div style={{ y: heroY, opacity: heroOpacity }} className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 w-full pointer-events-none">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center pointer-events-auto">
             {/* Hero Text */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}

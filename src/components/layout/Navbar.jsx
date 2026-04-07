@@ -25,6 +25,7 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [profileOpen, setProfileOpen] = useState(false);
+  const [hoveredLink, setHoveredLink] = useState(null);
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -70,21 +71,45 @@ export default function Navbar() {
             </Link>
 
             {/* Desktop Nav Links */}
-            <div className="hidden lg:flex items-center gap-1">
-              {publicLinks.map(link => (
-                <Link
-                  key={link.href}
-                  to={link.href}
-                  className={clsx(
-                    'px-3 py-2 text-sm font-medium rounded-lg transition-all duration-200',
-                    location.pathname === link.href
-                      ? 'text-civic-600 dark:text-civic-400 bg-civic-500/10'
-                      : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-tertiary)]'
-                  )}
-                >
-                  {link.label}
-                </Link>
-              ))}
+            <div 
+              className="hidden lg:flex items-center gap-1 relative"
+              onMouseLeave={() => setHoveredLink(null)}
+            >
+              {publicLinks.map(link => {
+                const isActive = location.pathname === link.href;
+                const isHovered = hoveredLink === link.href;
+
+                return (
+                  <Link
+                    key={link.href}
+                    to={link.href}
+                    onMouseEnter={() => setHoveredLink(link.href)}
+                    className={clsx(
+                      'relative px-4 py-2 text-sm font-medium rounded-full transition-colors duration-200',
+                      isActive || isHovered ? 'text-[var(--text-primary)]' : 'text-[var(--text-secondary)]'
+                    )}
+                  >
+                    {isActive && (
+                      <motion.div
+                        layoutId="active-nav-pill"
+                        className="absolute inset-0 bg-civic-500/10 rounded-full border border-civic-500/20"
+                        transition={{ type: "spring", bounce: 0.15, duration: 0.5 }}
+                      />
+                    )}
+                    {isHovered && !isActive && (
+                      <motion.div
+                        layoutId="hover-nav-pill"
+                        className="absolute inset-0 bg-[var(--bg-tertiary)] rounded-full"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.15 }}
+                      />
+                    )}
+                    <span className="relative z-10">{link.label}</span>
+                  </Link>
+                );
+              })}
             </div>
 
             {/* Desktop Right Actions */}
