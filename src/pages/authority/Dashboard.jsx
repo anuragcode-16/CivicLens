@@ -7,6 +7,7 @@ import Button from '@/components/common/Button';
 import { MOCK_REPORTS, MOCK_ANALYTICS, WASTE_CATEGORIES } from '@/data/mockData';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, PieChart, Pie, Cell, AreaChart, Area } from 'recharts';
 import { AlertTriangle, Clock, CheckCircle, MapPin, Users, ArrowRight, Zap, TrendingUp, ClipboardList, Shield } from 'lucide-react';
+import { ROUTES } from '@/lib/routes';
 
 const urgentReports = MOCK_REPORTS.filter(r => ['overdue', 'escalated', 'pending'].includes(r.status) && ['HIGH', 'CRITICAL'].includes(r.severity));
 
@@ -78,7 +79,7 @@ export default function AuthorityDashboard() {
         <Card className="p-5">
           <div className="flex items-center justify-between mb-4">
             <h3 className="text-base font-semibold text-[var(--text-primary)]">High Priority Reports</h3>
-            <Link to="/authority/queue"><Button variant="ghost" size="sm" iconRight={ArrowRight}>View All</Button></Link>
+            <Link to={ROUTES.authority.queue}><Button variant="ghost" size="sm" iconRight={ArrowRight}>View All</Button></Link>
           </div>
           <div className="space-y-3">
             {urgentReports.slice(0, 4).map((report, i) => (

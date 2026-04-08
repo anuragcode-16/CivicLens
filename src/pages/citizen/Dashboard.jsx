@@ -6,18 +6,19 @@ import Card, { MetricCard } from '@/components/common/Card';
 import StatusChip from '@/components/common/StatusChip';
 import Button from '@/components/common/Button';
 import { MOCK_REPORTS, MOCK_CAMPAIGNS } from '@/data/mockData';
+import { ROUTES } from '@/lib/routes';
 import {
   Camera, ClipboardList, MapPin, Megaphone, Trophy, Bell,
   TrendingUp, ArrowRight, Recycle, Truck, Bot, Leaf
 } from 'lucide-react';
 
 const quickActions = [
-  { label: 'Report Waste', icon: Camera, href: '/citizen/report', color: 'from-civic-500 to-teal-500' },
-  { label: 'Find Facility', icon: Recycle, href: '/citizen/disposal', color: 'from-ocean-500 to-civic-500' },
-  { label: 'Join Campaign', icon: Megaphone, href: '/campaigns', color: 'from-warm-500 to-blush-500' },
-  { label: 'Bulk Pickup', icon: Truck, href: '/citizen/bulk-pickup', color: 'from-teal-500 to-ocean-500' },
-  { label: 'AI Assistant', icon: Bot, href: '/citizen/assistant', color: 'from-ocean-500 to-ocean-600' },
-  { label: 'My Impact', icon: Trophy, href: '/citizen/profile', color: 'from-blush-500 to-warm-500' },
+  { label: 'Report Waste', icon: Camera, href: ROUTES.citizen.report, color: 'from-civic-500 to-teal-500' },
+  { label: 'Find Facility', icon: Recycle, href: ROUTES.citizen.disposal, color: 'from-ocean-500 to-civic-500' },
+  { label: 'Join Campaign', icon: Megaphone, href: ROUTES.campaigns, color: 'from-warm-500 to-blush-500' },
+  { label: 'Bulk Pickup', icon: Truck, href: ROUTES.citizen.bulkPickup, color: 'from-teal-500 to-ocean-500' },
+  { label: 'AI Assistant', icon: Bot, href: ROUTES.citizen.assistant, color: 'from-ocean-500 to-ocean-600' },
+  { label: 'My Impact', icon: Trophy, href: ROUTES.citizen.profile, color: 'from-blush-500 to-warm-500' },
 ];
 
 const notifications = [
@@ -118,7 +119,7 @@ export default function CitizenDashboard() {
         <div className="lg:col-span-2">
           <div className="flex items-center justify-between mb-4">
             <h2 className="text-lg font-semibold text-[var(--text-primary)]">Recent Reports</h2>
-            <Link to="/citizen/reports">
+            <Link to={ROUTES.citizen.reports}>
               <Button variant="ghost" size="sm" iconRight={ArrowRight}>View All</Button>
             </Link>
           </div>
@@ -130,7 +131,7 @@ export default function CitizenDashboard() {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.1 + i * 0.05 }}
               >
-                <Link to={`/citizen/reports/${report.id}`}>
+                <Link to={ROUTES.citizen.reportDetails(report.id)}>
                   <Card className="p-4 cursor-pointer">
                     <div className="flex items-center justify-between gap-3">
                       <div className="flex-1 min-w-0">

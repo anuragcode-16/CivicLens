@@ -13,6 +13,7 @@ import {
 } from 'lucide-react';
 import { HeroGlobe } from '@/components/landing/HeroGlobe';
 import { TimelineSection } from '@/components/landing/TimelineSection';
+import { ROUTES } from '@/lib/routes';
 
 const fadeInUp = {
   initial: { opacity: 0, y: 30 },
@@ -120,12 +121,12 @@ export default function Landing() {
               </p>
 
               <div className="flex flex-wrap gap-4">
-                <Link to="/citizen/report">
+                <Link to={ROUTES.citizen.report}>
                   <Button variant="primary" size="lg" icon={Camera} iconRight={ArrowRight}>
                     Report Waste
                   </Button>
                 </Link>
-                <Link to="/citizen">
+                <Link to={ROUTES.citizen.home}>
                   <Button variant="outline" size="lg" icon={BarChart3}>
                     Explore Dashboard
                   </Button>
@@ -178,12 +179,12 @@ export default function Landing() {
               Join thousands of citizens already making a difference. Report waste, track progress, and hold authorities accountable.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              <Link to="/signup">
+              <Link to={ROUTES.signup}>
                 <Button variant="primary" size="xl" icon={Leaf} iconRight={ArrowRight}>
                   Get Started Free
                 </Button>
               </Link>
-              <Link to="/features">
+              <Link to={ROUTES.features}>
                 <Button variant="outline" size="xl">
                   Learn More
                 </Button>

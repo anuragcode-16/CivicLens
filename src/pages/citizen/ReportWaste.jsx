@@ -7,6 +7,7 @@ import Input from '@/components/common/Input';
 import { TextArea, Select } from '@/components/common/Input';
 import Card from '@/components/common/Card';
 import { WASTE_CATEGORIES } from '@/data/mockData';
+import { ROUTES } from '@/lib/routes';
 import {
   Camera, Upload, MapPin, Scan, CheckCircle, AlertCircle,
   Loader2, X, Image as ImageIcon, ArrowRight, ArrowLeft
@@ -242,7 +243,7 @@ export default function ReportWaste() {
                 <div className="flex justify-between"><span className="text-[var(--text-secondary)]">Status</span><span className="font-medium text-warning-500">Pending</span></div>
               </div>
               <div className="flex gap-3">
-                <Button variant="outline" size="md" className="flex-1" onClick={() => navigate('/citizen/reports')}>
+                <Button variant="outline" size="md" className="flex-1" onClick={() => navigate(ROUTES.citizen.reports)}>
                   View My Reports
                 </Button>
                 <Button variant="primary" size="md" className="flex-1" onClick={() => { setStep(1); setImage(null); setImagePreview(null); setValidation(null); }}>
