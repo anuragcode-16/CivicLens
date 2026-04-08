@@ -1,18 +1,19 @@
 import { Link } from 'react-router-dom';
 import { Leaf, ExternalLink, Globe, Link2, Mail, Heart } from 'lucide-react';
+import { ROUTES } from '@/lib/routes';
 
 const footerLinks = {
   Product: [
-    { label: 'Features', href: '/features' },
-    { label: 'How it Works', href: '/how-it-works' },
-    { label: 'Campaigns', href: '/campaigns' },
-    { label: 'Live Heatmap', href: '/heatmap' },
+    { label: 'Features', href: ROUTES.features },
+    { label: 'How it Works', href: ROUTES.howItWorks },
+    { label: 'Campaigns', href: ROUTES.campaigns },
+    { label: 'Live Heatmap', href: ROUTES.heatmap },
   ],
   Resources: [
-    { label: 'Segregation Guide', href: '/citizen/guide' },
-    { label: 'FAQ', href: '/faq' },
-    { label: 'About Us', href: '/about' },
-    { label: 'Contact', href: '/contact' },
+    { label: 'Segregation Guide', href: ROUTES.citizen.guide },
+    { label: 'FAQ', href: ROUTES.faq },
+    { label: 'About Us', href: ROUTES.about },
+    { label: 'Contact', href: ROUTES.contact },
   ],
   Legal: [
     { label: 'Privacy Policy', href: '#' },
@@ -35,7 +36,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
           {/* Brand */}
           <div className="lg:col-span-2">
-            <Link to="/" className="flex items-center gap-2.5 mb-4">
+            <Link to={ROUTES.home} className="flex items-center gap-2.5 mb-4">
               <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-civic-500 to-teal-500 flex items-center justify-center">
                 <Leaf size={18} className="text-white" />
               </div>

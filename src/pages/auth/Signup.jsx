@@ -6,6 +6,7 @@ import Button from '@/components/common/Button';
 import Input from '@/components/common/Input';
 import { Select } from '@/components/common/Input';
 import { User, Mail, Lock, Phone, MapPin, UserPlus, Leaf, CheckCircle } from 'lucide-react';
+import { ROUTES, ROLE_HOME_PATHS } from '@/lib/routes';
 
 const roles = [
   { value: 'citizen', label: 'Citizen' },
@@ -57,8 +58,7 @@ export default function Signup() {
     const result = await signup(form);
     setLoading(false);
     if (result.success) {
-      const paths = { citizen: '/citizen', authority: '/authority', admin: '/admin', organization: '/organization' };
-      navigate(paths[result.user.role] || '/citizen');
+      navigate(ROLE_HOME_PATHS[result.user.role] || ROUTES.citizen.home);
     }
   };
 
@@ -180,7 +180,7 @@ export default function Signup() {
           <div className="w-full text-center mt-4 border-t border-[#323232] pt-4">
             <p className="text-sm text-[#666] font-medium">
               Already have an account?{' '}
-              <Link to="/login" className="text-[#323232] underline hover:text-[#2d8cf0]">Sign in</Link>
+              <Link to={ROUTES.login} className="text-[#323232] underline hover:text-[#2d8cf0]">Sign in</Link>
             </p>
           </div>
         </form>

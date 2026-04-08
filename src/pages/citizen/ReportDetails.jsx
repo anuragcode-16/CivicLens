@@ -6,6 +6,7 @@ import Button from '@/components/common/Button';
 import StatusChip from '@/components/common/StatusChip';
 import { MOCK_REPORTS, WASTE_CATEGORIES } from '@/data/mockData';
 import { ArrowLeft, MapPin, Clock, User, Building2, AlertTriangle, CheckCircle } from 'lucide-react';
+import { ROUTES } from '@/lib/routes';
 
 export default function ReportDetails() {
   const { id } = useParams();
@@ -22,7 +23,7 @@ export default function ReportDetails() {
 
   return (
     <PageWrapper>
-      <Link to="/citizen/reports" className="inline-flex items-center gap-1.5 text-sm text-civic-500 hover:text-civic-600 font-medium mb-6">
+      <Link to={ROUTES.citizen.reports} className="inline-flex items-center gap-1.5 text-sm text-civic-500 hover:text-civic-600 font-medium mb-6">
         <ArrowLeft size={16} /> Back to Reports
       </Link>
 

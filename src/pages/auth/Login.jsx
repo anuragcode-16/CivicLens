@@ -6,6 +6,7 @@ import Button from '@/components/common/Button';
 import Input from '@/components/common/Input';
 import { Select } from '@/components/common/Input';
 import { Mail, Lock, LogIn, Leaf, ArrowRight, Shield, Users, BarChart3 } from 'lucide-react';
+import { ROUTES, ROLE_HOME_PATHS } from '@/lib/routes';
 
 const roles = [
   { value: 'citizen', label: 'Citizen' },
@@ -34,8 +35,7 @@ export default function Login() {
     const result = await login(form.email, form.password);
     setLoading(false);
     if (result.success) {
-      const paths = { citizen: '/citizen', authority: '/authority', admin: '/admin', organization: '/organization' };
-      navigate(paths[result.user.role] || '/citizen');
+      navigate(ROLE_HOME_PATHS[result.user.role] || ROUTES.citizen.home);
     } else {
       setError('Invalid credentials. Try: citizen@civic.lens / authority@civic.lens / admin@civic.lens / org@civic.lens');
     }
@@ -138,7 +138,7 @@ export default function Login() {
           <div className="w-full text-center mt-4 border-t border-[#323232] pt-4">
             <p className="text-sm text-[#666] font-medium">
               Don't have an account?{' '}
-              <Link to="/signup" className="text-[#323232] underline hover:text-[#2d8cf0]">Sign up</Link>
+              <Link to={ROUTES.signup} className="text-[#323232] underline hover:text-[#2d8cf0]">Sign up</Link>
             </p>
           </div>
         </form>

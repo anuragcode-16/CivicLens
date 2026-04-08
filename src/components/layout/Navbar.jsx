@@ -10,13 +10,14 @@ import {
 import Button from '@/components/common/Button';
 import clsx from 'clsx';
 import logoUrl from '../../../icons/logo.png';
+import { ROUTES, ROLE_HOME_PATHS } from '@/lib/routes';
 
 const publicLinks = [
-  { label: 'Features', href: '/features' },
-  { label: 'How it Works', href: '/how-it-works' },
+  { label: 'Features', href: ROUTES.features },
+  { label: 'How it Works', href: ROUTES.howItWorks },
 
-  { label: 'About', href: '/about' },
-  { label: 'Contact', href: '/contact' },
+  { label: 'About', href: ROUTES.about },
+  { label: 'Contact', href: ROUTES.contact },
 ];
 
 export default function Navbar() {
@@ -41,9 +42,8 @@ export default function Navbar() {
   }, [location.pathname]);
 
   const getDashboardPath = () => {
-    if (!user) return '/login';
-    const paths = { citizen: '/citizen', authority: '/authority', admin: '/admin', organization: '/organization' };
-    return paths[user.role] || '/citizen';
+    if (!user) return ROUTES.login;
+    return ROLE_HOME_PATHS[user.role] || ROUTES.citizen.home;
   };
 
   return (
@@ -61,7 +61,7 @@ export default function Navbar() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
-            <Link to="/" className="flex items-center gap-2.5 group">
+            <Link to={ROUTES.home} className="flex items-center gap-2.5 group">
               <img 
                 src={logoUrl} 
                 alt="CivicLens Logo" 
@@ -166,7 +166,7 @@ export default function Navbar() {
                           <LayoutDashboard size={16} /> Dashboard
                         </button>
                         <button
-                          onClick={() => { logout(); navigate('/'); setProfileOpen(false); }}
+                          onClick={() => { logout(); navigate(ROUTES.home); setProfileOpen(false); }}
                           className="w-full flex items-center gap-2.5 px-3 py-2 text-sm text-danger-500 hover:bg-danger-50 dark:hover:bg-danger-500/10 rounded-lg transition-colors"
                         >
                           <LogOut size={16} /> Sign Out
@@ -177,10 +177,10 @@ export default function Navbar() {
                 </div>
               ) : (
                 <>
-                  <Link to="/login">
+                  <Link to={ROUTES.login}>
                     <Button variant="ghost" size="sm" icon={LogIn}>Log In</Button>
                   </Link>
-                  <Link to="/signup">
+                  <Link to={ROUTES.signup}>
                     <Button variant="primary" size="sm" icon={UserPlus}>Sign Up</Button>
                   </Link>
                 </>
@@ -233,16 +233,16 @@ export default function Navbar() {
                     <Link to={getDashboardPath()} className="flex-1">
                       <Button variant="primary" size="md" className="w-full">Dashboard</Button>
                     </Link>
-                    <Button variant="ghost" size="md" onClick={() => { logout(); navigate('/'); }}>
+                    <Button variant="ghost" size="md" onClick={() => { logout(); navigate(ROUTES.home); }}>
                       <LogOut size={16} />
                     </Button>
                   </>
                 ) : (
                   <>
-                    <Link to="/login" className="flex-1">
+                    <Link to={ROUTES.login} className="flex-1">
                       <Button variant="outline" size="md" className="w-full">Log In</Button>
                     </Link>
-                    <Link to="/signup" className="flex-1">
+                    <Link to={ROUTES.signup} className="flex-1">
                       <Button variant="primary" size="md" className="w-full">Sign Up</Button>
                     </Link>
                   </>

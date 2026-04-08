@@ -8,6 +8,7 @@ import StatusChip from '@/components/common/StatusChip';
 import EmptyState from '@/components/common/EmptyState';
 import { MOCK_REPORTS, WASTE_CATEGORIES } from '@/data/mockData';
 import { Filter, Search, ArrowRight, Camera, Clock, MapPin } from 'lucide-react';
+import { ROUTES } from '@/lib/routes';
 
 const statusFilters = ['all', 'pending', 'in-progress', 'resolved', 'overdue', 'escalated'];
 
@@ -28,7 +29,7 @@ export default function MyReports() {
           <h1 className="text-2xl font-bold text-[var(--text-primary)] mb-1">My Reports</h1>
           <p className="text-[var(--text-secondary)]">{MOCK_REPORTS.length} total reports</p>
         </div>
-        <Link to="/citizen/report">
+        <Link to={ROUTES.citizen.report}>
           <Button variant="primary" size="md" icon={Camera}>New Report</Button>
         </Link>
       </div>
@@ -74,7 +75,7 @@ export default function MyReports() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.03 }}
             >
-              <Link to={`/citizen/reports/${report.id}`}>
+              <Link to={ROUTES.citizen.reportDetails(report.id)}>
                 <Card className="p-4 sm:p-5 cursor-pointer">
                   <div className="flex items-start gap-4">
                     <div className="w-16 h-16 rounded-xl bg-[var(--bg-tertiary)] flex items-center justify-center flex-shrink-0 text-2xl">

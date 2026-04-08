@@ -10,67 +10,68 @@ import {
   AlertTriangle, UserCog, Eye, Gauge, FileCheck
 } from 'lucide-react';
 import clsx from 'clsx';
+import { ROUTES } from '@/lib/routes';
 
 const menusByRole = {
   citizen: [
     { section: 'Main', items: [
-      { label: 'Dashboard', icon: LayoutDashboard, href: '/citizen' },
-      { label: 'Report Waste', icon: Camera, href: '/citizen/report' },
-      { label: 'My Reports', icon: ClipboardList, href: '/citizen/reports' },
+      { label: 'Dashboard', icon: LayoutDashboard, href: ROUTES.citizen.home },
+      { label: 'Report Waste', icon: Camera, href: ROUTES.citizen.report },
+      { label: 'My Reports', icon: ClipboardList, href: ROUTES.citizen.reports },
     ]},
     { section: 'Explore', items: [
-      { label: 'Live Heatmap', icon: MapPin, href: '/heatmap' },
-      { label: 'Campaigns', icon: Megaphone, href: '/campaigns' },
-      { label: 'Disposal Locator', icon: Recycle, href: '/citizen/disposal' },
-      { label: 'Bulk Pickup', icon: Truck, href: '/citizen/bulk-pickup' },
+      { label: 'Live Heatmap', icon: MapPin, href: ROUTES.heatmap },
+      { label: 'Campaigns', icon: Megaphone, href: ROUTES.campaigns },
+      { label: 'Disposal Locator', icon: Recycle, href: ROUTES.citizen.disposal },
+      { label: 'Bulk Pickup', icon: Truck, href: ROUTES.citizen.bulkPickup },
     ]},
     { section: 'Learn', items: [
-      { label: 'AI Assistant', icon: Bot, href: '/citizen/assistant' },
-      { label: 'Segregation Guide', icon: BookOpen, href: '/citizen/guide' },
+      { label: 'AI Assistant', icon: Bot, href: ROUTES.citizen.assistant },
+      { label: 'Segregation Guide', icon: BookOpen, href: ROUTES.citizen.guide },
     ]},
     { section: 'Profile', items: [
-      { label: 'My Impact', icon: Trophy, href: '/citizen/profile' },
+      { label: 'My Impact', icon: Trophy, href: ROUTES.citizen.profile },
     ]},
   ],
   authority: [
     { section: 'Operations', items: [
-      { label: 'Dashboard', icon: LayoutDashboard, href: '/authority' },
-      { label: 'Report Queue', icon: ClipboardList, href: '/authority/queue' },
-      { label: 'Assign Tasks', icon: CheckSquare, href: '/authority/assign' },
-      { label: 'Resolution', icon: FileCheck, href: '/authority/resolution' },
+      { label: 'Dashboard', icon: LayoutDashboard, href: ROUTES.authority.home },
+      { label: 'Report Queue', icon: ClipboardList, href: ROUTES.authority.queue },
+      { label: 'Assign Tasks', icon: CheckSquare, href: ROUTES.authority.assign },
+      { label: 'Resolution', icon: FileCheck, href: ROUTES.authority.resolution },
     ]},
     { section: 'Analytics', items: [
-      { label: 'Ward Analytics', icon: BarChart3, href: '/authority/analytics' },
-      { label: 'Escalations', icon: AlertTriangle, href: '/authority/escalation' },
-      { label: 'Workers', icon: UserCog, href: '/authority/workers' },
+      { label: 'Ward Analytics', icon: BarChart3, href: ROUTES.authority.analytics },
+      { label: 'Escalations', icon: AlertTriangle, href: ROUTES.authority.escalation },
+      { label: 'Workers', icon: UserCog, href: ROUTES.authority.workers },
     ]},
     { section: 'Map', items: [
-      { label: 'Live Heatmap', icon: MapPin, href: '/heatmap' },
+      { label: 'Live Heatmap', icon: MapPin, href: ROUTES.heatmap },
     ]},
   ],
   admin: [
     { section: 'Overview', items: [
-      { label: 'Dashboard', icon: LayoutDashboard, href: '/admin' },
-      { label: 'Analytics', icon: BarChart3, href: '/admin/analytics' },
-      { label: 'System Monitor', icon: Activity, href: '/admin/monitor' },
+      { label: 'Dashboard', icon: LayoutDashboard, href: ROUTES.admin.home },
+      { label: 'Analytics', icon: BarChart3, href: ROUTES.admin.analytics },
+      { label: 'System Monitor', icon: Activity, href: ROUTES.admin.monitor },
     ]},
     { section: 'Management', items: [
-      { label: 'Users & Roles', icon: Users, href: '/admin/users' },
-      { label: 'Moderation', icon: Shield, href: '/admin/moderation' },
-      { label: 'Campaigns', icon: Megaphone, href: '/admin/campaigns' },
+      { label: 'Users & Roles', icon: Users, href: ROUTES.admin.users },
+      { label: 'Moderation', icon: Shield, href: ROUTES.admin.moderation },
+      { label: 'Campaigns', icon: Megaphone, href: ROUTES.admin.campaigns },
     ]},
     { section: 'Map', items: [
-      { label: 'Live Heatmap', icon: MapPin, href: '/heatmap' },
+      { label: 'Live Heatmap', icon: MapPin, href: ROUTES.heatmap },
     ]},
   ],
   organization: [
     { section: 'Main', items: [
-      { label: 'Dashboard', icon: LayoutDashboard, href: '/organization' },
-      { label: 'Compliance', icon: FileCheck, href: '/organization/compliance' },
-      { label: 'Waste Tracking', icon: BarChart3, href: '/organization/tracking' },
+      { label: 'Dashboard', icon: LayoutDashboard, href: ROUTES.organization.home },
+      { label: 'Compliance', icon: FileCheck, href: ROUTES.organization.compliance },
+      { label: 'Waste Tracking', icon: BarChart3, href: ROUTES.organization.tracking },
     ]},
     { section: 'Community', items: [
-      { label: 'Campaigns', icon: Megaphone, href: '/organization/participation' },
+      { label: 'Campaigns', icon: Megaphone, href: ROUTES.organization.participation },
     ]},
   ],
 };

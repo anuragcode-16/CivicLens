@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import Button from '@/components/common/Button';
 import Input from '@/components/common/Input';
 import { Mail, ArrowLeft, Send, CheckCircle, Leaf } from 'lucide-react';
+import { ROUTES } from '@/lib/routes';
 
 export default function ForgotPassword() {
   const [email, setEmail] = useState('');
@@ -66,7 +67,7 @@ export default function ForgotPassword() {
         )}
 
         <div className="mt-6 text-center">
-          <Link to="/login" className="inline-flex items-center gap-1.5 text-sm text-civic-500 hover:text-civic-600 font-medium">
+          <Link to={ROUTES.login} className="inline-flex items-center gap-1.5 text-sm text-civic-500 hover:text-civic-600 font-medium">
             <ArrowLeft size={14} /> Back to Sign In
           </Link>
         </div>
