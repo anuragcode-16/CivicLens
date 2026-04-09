@@ -23,15 +23,10 @@ import Signup from "@/pages/auth/Signup";
 import ForgotPassword from "@/pages/auth/ForgotPassword";
 
 // Citizen Pages
-<<<<<<< Updated upstream
 import TopDashboard from '@/pages/citizen/TopDashboard';
 import ReportDetails from '@/pages/citizen/ReportDetails';
 import Heatmap from '@/pages/citizen/Heatmap';
 import Campaigns from '@/pages/citizen/Campaigns';
-=======
-import TopDashboard from "@/pages/citizen/TopDashboard";
-import ReportDetails from "@/pages/citizen/ReportDetails";
->>>>>>> Stashed changes
 
 import DisposalLocator from "@/pages/citizen/DisposalLocator";
 import BulkPickup from "@/pages/citizen/BulkPickup";
