@@ -36,12 +36,12 @@ const ALL_REPORTS = [
 
 // ─── Time range config ────────────────────────────────────────────────
 const TIME_RANGES = [
-  { key: 'today',    label: 'Today',         days: 0,   short: 'Today' },
-  { key: 'week',     label: 'This Week',     days: 7,   short: '7D' },
-  { key: 'month',    label: 'This Month',    days: 30,  short: '30D' },
-  { key: '3months',  label: 'Last 3 Months', days: 90,  short: '3M' },
-  { key: '6months',  label: 'Last 6 Months', days: 180, short: '6M' },
-  { key: 'all',      label: 'All Time',      days: Infinity, short: 'All' },
+  { key: 'today', label: 'Today', days: 0, short: 'Today' },
+  { key: 'week', label: 'This Week', days: 7, short: '7D' },
+  { key: 'month', label: 'This Month', days: 30, short: '30D' },
+  { key: '3months', label: 'Last 3 Months', days: 90, short: '3M' },
+  { key: '6months', label: 'Last 6 Months', days: 180, short: '6M' },
+  { key: 'all', label: 'All Time', days: Infinity, short: 'All' },
 ];
 
 const STATUS_FILTERS = ['all', 'pending', 'in-progress', 'overdue', 'escalated', 'resolved'];
@@ -97,13 +97,13 @@ function getStatusColor(status) {
 
 // ─── Main Component ───────────────────────────────────────────────────
 export default function ReportQueue() {
-  const [timeRange, setTimeRange]       = useState('all');
+  const [timeRange, setTimeRange] = useState('all');
   const [statusFilter, setStatusFilter] = useState('all');
   const [categoryFilter, setCategoryFilter] = useState('all');
   const [severityFilter, setSeverityFilter] = useState('all');
-  const [searchQuery, setSearchQuery]   = useState('');
+  const [searchQuery, setSearchQuery] = useState('');
   const [selectedReport, setSelectedReport] = useState(null);
-  const [showFilters, setShowFilters]   = useState(false);
+  const [showFilters, setShowFilters] = useState(false);
   const listRef = useRef(null);
   const reportRefs = useRef({});
 
@@ -129,14 +129,14 @@ export default function ReportQueue() {
     if (searchQuery) {
       const q = searchQuery.toLowerCase();
       if (!r.id.toLowerCase().includes(q) &&
-          !r.description.toLowerCase().includes(q) &&
-          !r.citizen_name.toLowerCase().includes(q) &&
-          !r.address.toLowerCase().includes(q)) return false;
+        !r.description.toLowerCase().includes(q) &&
+        !r.citizen_name.toLowerCase().includes(q) &&
+        !r.address.toLowerCase().includes(q)) return false;
     }
     return true;
   });
 
-  const pendingCount  = filtered.filter(r => !isResolved(r)).length;
+  const pendingCount = filtered.filter(r => !isResolved(r)).length;
   const resolvedCount = filtered.filter(r => isResolved(r)).length;
 
   // ── Map marker click → scroll list ───────────────────────────────
@@ -153,7 +153,7 @@ export default function ReportQueue() {
 
       {/* ── Top Bar ─────────────────────────────────────────────── */}
       <div className="flex-shrink-0 px-4 pt-4 pb-3 border-b border-[var(--border-subtle)]"
-           style={{ background: 'var(--bg-glass-strong)', backdropFilter: 'blur(16px)' }}>
+        style={{ background: 'var(--bg-glass-strong)', backdropFilter: 'blur(16px)' }}>
 
         {/* Title row */}
         <div className="flex items-center justify-between mb-3">
@@ -190,8 +190,8 @@ export default function ReportQueue() {
               onClick={() => setShowFilters(v => !v)}
               className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-all
                          border ${showFilters
-                           ? 'bg-civic-500 text-white border-civic-500'
-                           : 'bg-[var(--bg-secondary)] text-[var(--text-secondary)] border-[var(--border-subtle)] hover:border-civic-500'}`}
+                  ? 'bg-civic-500 text-white border-civic-500'
+                  : 'bg-[var(--bg-secondary)] text-[var(--text-secondary)] border-[var(--border-subtle)] hover:border-civic-500'}`}
             >
               <SlidersHorizontal size={13} />
               Filters
@@ -205,11 +205,10 @@ export default function ReportQueue() {
             <button
               key={t.key}
               onClick={() => setTimeRange(t.key)}
-              className={`px-3 py-1 rounded-lg text-xs font-medium transition-all whitespace-nowrap ${
-                timeRange === t.key
-                  ? 'bg-civic-500 text-white shadow-md shadow-civic-500/30'
-                  : 'bg-[var(--bg-tertiary)] text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)]'
-              }`}
+              className={`px-3 py-1 rounded-lg text-xs font-medium transition-all whitespace-nowrap ${timeRange === t.key
+                ? 'bg-civic-500 text-white shadow-md shadow-civic-500/30'
+                : 'bg-[var(--bg-tertiary)] text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)]'
+                }`}
             >
               {t.label}
             </button>
@@ -233,9 +232,8 @@ export default function ReportQueue() {
                   {STATUS_FILTERS.map(s => (
                     <button key={s}
                       onClick={() => setStatusFilter(s)}
-                      className={`px-2.5 py-0.5 rounded-full text-xs font-medium capitalize transition-all ${
-                        statusFilter === s ? 'bg-ocean-500 text-white' : 'bg-[var(--bg-tertiary)] text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)]'
-                      }`}>
+                      className={`px-2.5 py-0.5 rounded-full text-xs font-medium capitalize transition-all ${statusFilter === s ? 'bg-ocean-500 text-white' : 'bg-[var(--bg-tertiary)] text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)]'
+                        }`}>
                       {s === 'all' ? 'All' : s.replace('-', ' ')}
                     </button>
                   ))}
@@ -246,9 +244,8 @@ export default function ReportQueue() {
                   {['all', 'CRITICAL', 'HIGH', 'MEDIUM', 'LOW'].map(sev => (
                     <button key={sev}
                       onClick={() => setSeverityFilter(sev)}
-                      className={`px-2.5 py-0.5 rounded-full text-xs font-medium transition-all ${
-                        severityFilter === sev ? 'text-white' : 'bg-[var(--bg-tertiary)] text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)]'
-                      }`}
+                      className={`px-2.5 py-0.5 rounded-full text-xs font-medium transition-all ${severityFilter === sev ? 'text-white' : 'bg-[var(--bg-tertiary)] text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)]'
+                        }`}
                       style={severityFilter === sev && sev !== 'all' ? { background: SEVERITY_COLORS[sev] } : severityFilter === sev ? { background: '#64748b', color: '#fff' } : {}}
                     >
                       {sev === 'all' ? 'All' : sev}
@@ -259,15 +256,13 @@ export default function ReportQueue() {
                 <div className="flex items-center gap-1.5 flex-wrap">
                   <span className="text-xs text-[var(--text-tertiary)] font-medium">Category:</span>
                   <button onClick={() => setCategoryFilter('all')}
-                    className={`px-2.5 py-0.5 rounded-full text-xs font-medium transition-all ${
-                      categoryFilter === 'all' ? 'bg-teal-500 text-white' : 'bg-[var(--bg-tertiary)] text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)]'
-                    }`}>All</button>
+                    className={`px-2.5 py-0.5 rounded-full text-xs font-medium transition-all ${categoryFilter === 'all' ? 'bg-teal-500 text-white' : 'bg-[var(--bg-tertiary)] text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)]'
+                      }`}>All</button>
                   {Object.entries(WASTE_CATEGORIES).map(([key, val]) => (
                     <button key={key}
                       onClick={() => setCategoryFilter(key)}
-                      className={`px-2.5 py-0.5 rounded-full text-xs font-medium transition-all flex items-center gap-1 ${
-                        categoryFilter === key ? 'bg-teal-500 text-white' : 'bg-[var(--bg-tertiary)] text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)]'
-                      }`}>
+                      className={`px-2.5 py-0.5 rounded-full text-xs font-medium transition-all flex items-center gap-1 ${categoryFilter === key ? 'bg-teal-500 text-white' : 'bg-[var(--bg-tertiary)] text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)]'
+                        }`}>
                       <span>{val.icon}</span>{val.label}
                     </button>
                   ))}
@@ -320,9 +315,8 @@ export default function ReportQueue() {
                     <div className="text-xs min-w-[200px]">
                       <div className="flex items-center justify-between mb-1.5">
                         <span className="font-mono font-semibold text-gray-400 text-[10px]">{report.id}</span>
-                        <span className={`px-1.5 py-0.5 rounded-full text-[10px] font-bold ${
-                          resolved ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'
-                        }`}>{resolved ? 'RESOLVED' : report.status.toUpperCase()}</span>
+                        <span className={`px-1.5 py-0.5 rounded-full text-[10px] font-bold ${resolved ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'
+                          }`}>{resolved ? 'RESOLVED' : report.status.toUpperCase()}</span>
                       </div>
                       <p className="text-gray-700 mb-1 font-medium leading-tight">{report.description}</p>
                       <div className="flex items-center gap-1.5 text-gray-500">
@@ -386,7 +380,7 @@ export default function ReportQueue() {
         >
           {/* List header */}
           <div className="sticky top-0 z-10 px-3 py-2.5 border-b border-[var(--border-subtle)]"
-               style={{ background: 'var(--bg-glass-strong)', backdropFilter: 'blur(12px)' }}>
+            style={{ background: 'var(--bg-glass-strong)', backdropFilter: 'blur(12px)' }}>
             <div className="flex items-center gap-2">
               <List size={14} className="text-[var(--text-tertiary)]" />
               <span className="text-xs font-semibold text-[var(--text-primary)]">Reports</span>
@@ -419,11 +413,10 @@ export default function ReportQueue() {
                     initial={{ opacity: 0, y: 8 }}
                     animate={{ opacity: 1, y: 0 }}
                     onClick={() => setSelectedReport(isSelected ? null : report.id)}
-                    className={`rounded-xl p-3 cursor-pointer transition-all border ${
-                      isSelected
-                        ? 'border-civic-500 bg-civic-500/5 shadow-md shadow-civic-500/10'
-                        : 'border-[var(--border-subtle)] bg-[var(--bg-card)] hover:border-[var(--text-tertiary)]'
-                    }`}
+                    className={`rounded-xl p-3 cursor-pointer transition-all border ${isSelected
+                      ? 'border-civic-500 bg-civic-500/5 shadow-md shadow-civic-500/10'
+                      : 'border-[var(--border-subtle)] bg-[var(--bg-card)] hover:border-[var(--text-tertiary)]'
+                      }`}
                   >
                     {/* Report header */}
                     <div className="flex items-start justify-between gap-2 mb-2">
