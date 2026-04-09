@@ -3,6 +3,7 @@ import { setupListeners } from '@reduxjs/toolkit/query';
 import { baseApi } from '@/store/api/baseApi';
 import '@/store/api/usersApi';
 import '@/store/api/reportsApi';
+import '@/store/api/campaignsApi';
 import { reportsCacheReducer } from '@/store/slices/reportsSlice';
 
 const authSlice = createSlice({

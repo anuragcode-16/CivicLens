@@ -2,6 +2,19 @@ import { baseApi } from '@/store/api/baseApi';
 
 const REPORTS_PATH = '/api/reports';
 
+function normalizeReportPayload(payload = {}) {
+  const latitude = Number(payload.latitude ?? payload.lat);
+  const longitude = Number(payload.longitude ?? payload.lng);
+  const hasLatitude = Number.isFinite(latitude);
+  const hasLongitude = Number.isFinite(longitude);
+
+  return {
+    ...payload,
+    ...(hasLatitude ? { latitude, lat: latitude } : {}),
+    ...(hasLongitude ? { longitude, lng: longitude } : {}),
+  };
+}
+
 export const reportsApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     getReports: builder.query({
@@ -29,7 +42,7 @@ export const reportsApi = baseApi.injectEndpoints({
       query: (payload) => ({
         url: REPORTS_PATH,
         method: 'POST',
-        body: payload,
+        body: normalizeReportPayload(payload),
       }),
       invalidatesTags: [{ type: 'Report', id: 'LIST' }],
     }),

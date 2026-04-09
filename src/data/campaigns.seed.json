@@ -1,0 +1,52 @@
+{
+  "campaigns": [
+    {
+      "createdBy": 1,
+      "title": "Clean City Drive",
+      "description": "Weekend cleanup campaign covering public streets, footpaths, and bin overflow hotspots.",
+      "city": "Bhopal",
+      "date": "2026-04-20T07:30:00.000Z",
+      "participantCount": 50
+    },
+    {
+      "createdBy": 2,
+      "title": "Lakefront Plastic Cleanup",
+      "description": "Citizen-led drive to collect plastic bottles, wrappers, and mixed litter near the lake edge.",
+      "city": "Bangalore",
+      "date": "2026-04-27T06:30:00.000Z",
+      "participantCount": 120
+    },
+    {
+      "createdBy": 3,
+      "title": "Neighborhood Compost Action Day",
+      "description": "A ward-level campaign focused on wet waste segregation and community composting awareness.",
+      "city": "Mysuru",
+      "date": "2026-05-02T08:00:00.000Z",
+      "participantCount": 40
+    },
+    {
+      "createdBy": 4,
+      "title": "E-Waste Collection Marathon",
+      "description": "Collection event for obsolete electronics with safe routing to approved recyclers.",
+      "city": "Hyderabad",
+      "date": "2026-05-10T09:30:00.000Z",
+      "participantCount": 200
+    },
+    {
+      "createdBy": 5,
+      "title": "Construction Debris Clearance Camp",
+      "description": "Joint volunteer and civic drive to clear debris dumped along neighborhood roads and drains.",
+      "city": "Indore",
+      "date": "2026-05-16T07:00:00.000Z",
+      "participantCount": 80
+    },
+    {
+      "createdBy": 1,
+      "title": "Monsoon Drain Cleanup Campaign",
+      "description": "Pre-monsoon drain desilting support drive to remove visible waste blockage points.",
+      "city": "Chennai",
+      "date": "2026-05-24T05:45:00.000Z",
+      "participantCount": 65
+    }
+  ]
+}
